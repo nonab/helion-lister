@@ -7,7 +7,11 @@ from playwright.sync_api import sync_playwright
 import argparse
 from pathlib import Path
 import getpass
+import sys
+import io
 
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 # Sanitize filenames
 def sanitize_filename(filename):
     return re.sub(r'[\\/*?:"<>|]', "", filename)
